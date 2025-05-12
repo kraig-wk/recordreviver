@@ -3,10 +3,10 @@ require('dotenv').config();
 
 const pool = mysql.createPool({
   host:  process.env.DB_HOST,
-  user:DB_USER,    
-  port: DB_PORT, //remove when connecting locally
-  password: DB_PASSWORD,  
-  database: DB_NAME,  
+  user: process.env.DB_USER,    
+  port: process.env.DB_PORT, //remove when connecting locally
+  password: process.env.DB_PASSWORD,  
+  database: process.env.DB_NAME,  
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
