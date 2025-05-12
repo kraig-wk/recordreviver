@@ -5,10 +5,10 @@ require('dotenv').config();
 const cors = require('cors');
 app.use(cors()); // allow all origins (you can restrict later)
 const albumRoutes = require('./routes/albums');
-
+const path = require('path');
 app.use(express.json());
 app.use('/api', albumRoutes);    
-
+app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
     console.log('Root route hit');
     res.send('Server is live');
