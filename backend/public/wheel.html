@@ -252,7 +252,7 @@
     }
 
     shuffleBtn.addEventListener("click", () => {
-      albums = [...albums].sort(() => 0.5 - Math.random()).slice(0, 50);
+      albums = [...fullalbums].sort(() => 0.5 - Math.random()).slice(0, 50);
       drawWheel();
     });
 
