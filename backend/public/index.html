@@ -22,7 +22,7 @@
 
     async function fetchAlbums() {
       try {
-        const res = await fetch('http://localhost:3000/api/albums?list=0');
+        const res = await fetch('/api/albums?list=0');
         allAlbums = await res.json();
         createPaginationButtons();
         renderAlbums(1);
