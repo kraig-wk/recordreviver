@@ -102,7 +102,7 @@
 
     async function fetchAlbumsByList(listId) {
       try {
-        const res = await fetch(`http://localhost:3000/api/albums?orderBy=name&orderDir=asc&list=${listId}`);
+        const res = await fetch(`/api/albums?orderBy=name&orderDir=asc&list=${listId}`);
         const data = await res.json();
         console.log(data)
         return data.map(album => ({ name: album.name, artist_name: album.artist_name, link: album.link }));
