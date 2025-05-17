@@ -69,7 +69,7 @@
     <button id="recs-btn">Recs</button>
   </div>
   <h2 id="wheel-title" style="text-align: center; color: white; margin-top: 0.5em; font-size: 22px;">RollingStone Top 500</h2>
-  <h3 id="wheel-subtitle" style="text-align: center; color: rgba(255, 255, 255, 0.719); margin-top: 0.5em; font-size: 14px;">Expand your music taste with a random RollingStone Top 500 album! Only 50 albums are displayed, shuffle new ones in or take a look at the full list.</h3>
+  <h3 id="wheel-subtitle" style="text-align: center; color: rgba(255, 255, 255, 0.719); padding-left: 10px;padding-right: 10px; font-size: 14px;">Expand your music taste with a random RollingStone Top 500 album! Only 50 albums are displayed, shuffle new ones in or take a look at the full list.</h3>
   <div class="view-full-list">
     <a id="view-list-link">View Full List</a>
   </div>
@@ -144,18 +144,21 @@
 
     async function switchList(listId) {
       currentList = listId;
+      document.getElementById("loading-spinner").style.display = "flex";
       if (listId === 1) {
         if (!rs500Albums) rs500Albums = await fetchAlbumsByList(1);
         fullalbums = [...rs500Albums];
         albums = fullShuffle([...rs500Albums])
         title.innerText = "RollingStone Top 500";
-        subtitle.innerText = "Expand your music taste with a random RollingStone Top 500 album! Only 50 albums are displayed, shuffle new ones in or take a look at the full list.";
+        subtitle.innerText = "Expand your music taste with a random RollingStone Top 500 album! Only 50 albums are displayed, shuffle in new ones or take a look at the full list.";
+        document.getElementById("loading-spinner").style.display = "none";
       } else {
         if (!recsAlbums) recsAlbums = await fetchAlbumsByList(2);
         fullalbums = [...recsAlbums];
         albums = fullShuffle([...recsAlbums])
         title.innerText = "Recommended Albums";
-        subtitle.innerText = "Expand your music taste with a random community recommended album! Only 50 albums are displayed, shuffle new ones in or take a look at the full list.";
+        subtitle.innerText = "Expand your music taste with a random community recommended album! Only 50 albums are displayed, shuffle in new ones or take a look at the full list.";
+        document.getElementById("loading-spinner").style.display = "none";
       }
       console.log(fullalbums)
       rotation = 0;
